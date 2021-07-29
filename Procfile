@@ -1,1 +1,1 @@
-web: gunicorn django_project.wsgi
+web: gunicorn cnn_skin_cancer.wsgi
