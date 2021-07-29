@@ -1,0 +1,84 @@
+html[data-theme="light"] {
+	--primary-text: black;
+	--primary: #cc2929f3;
+	--container1: #f77171;
+	--container2: #d3b5b5;
+	--title: white;
+	--container3: #ff9595;
+}
+html[data-theme="dark"] {
+	--primary-text: white;
+	--primary: #121212;
+	--container1: #202020;
+	--container2: #353535;
+	--title: white;
+	--container3: #3f3f3f;
+}
+html * {
+	font-family: "Oswald", sans-serif;
+}
+p {
+	color: var(--primary-text);
+}
+h1 {
+	color: var(--primary-text);
+	text-align: center;
+}
+.p-header {
+	text-align: center;
+	font-size: 140%;
+}
+.p-types {
+	font-size: 160%;
+	color: var(--primary-text);
+}
+.p-feedback {
+	font-size: 130%;
+}
+.bottom {
+	color: var(--primary-text);
+	position: absolute;
+	bottom: 0%;
+}
+#global-bg {
+	background-color: var(--primary);
+}
+#container-1 {
+	height: 1500px;
+	background-color: var(--container1);
+}
+#container-2 {
+	height: 92%;
+	position: relative;
+	background-color: var(--container2);
+}
+#title {
+	color: white;
+}
+.container-3 {
+	background-color: var(--container3);
+	width: 98%;
+}
+.card {
+	background-color: var(--container3);
+}
+.input-container-er {
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	position: absolute;
+}
+.upload-box {
+	font-size: 16px;
+	background: var(--title);
+	border-radius: 50px;
+	box-shadow: 2px 2px 5px var(--primary-text);
+	width: 30%;
+	outline: none;
+}
+#file-input {
+	background-color: white;
+	border-radius: 10px;
+	border-color: black;
+	border-width: 5px;
+}

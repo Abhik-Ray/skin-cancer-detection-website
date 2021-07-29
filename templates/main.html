@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" data-theme="light">
+  <!-- Importing external files for fonts, css and usage -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Oswald&display=swap");
+  </style>
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css"
+  />
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+    crossorigin="anonymous"
+  />
+  <link id="theme-style" rel="stylesheet" href="{% static 'style/result-theme.css' %}" />
+  <link rel="icon" href="{{ STATIC_URL }}images/Logo 1.png" type="image/x-icon" />
+  <head>
+    <title>RESULT</title>
+  </head>
+  <body id="global-bg">
+    <div id="container-1" class="container rounded my-3 px-4 py-2">
+      <div class="d-flex justify-content-between flex-row">
+        <div class="p-2"></div>
+        <div id="title" class="p-2">
+          <h1 style="color: #39ff14; text-shadow: 2px 2px black">
+            Skin Cancer Detection using CNN
+          </h1>
+          <p
+            class="p-header"
+            style="color: #39ff14; text-shadow: 2px 2px black"
+          >
+            Please be aware that the best option is to always visit a doctor 🩺
+          </p>
+        </div>
+        <div class="p-2">
+          <i id="theme-button" style="font-size: 40px" class="bi bi-moon-fill"></i>
+        </div>
+      </div>
+      <div id="container-2" class="container rounded my-1 px-2">
+        <br /><br />
+        <div class="container container-3 shadow-sms p-4 m-3 rounded-1">
+          <p class="p-types">Steps</p>
+          <p class="p-text">
+            1. Upload an image to this page. Everything runs locally e.i. we do
+            not store any data.
+            <br />
+            2. Press process to run the image through our Neural Network.
+            <br />
+            3. Get the result in progress bar format.
+            <br>
+            <strong>Please ensure that the file uploaded is any of the these types: (.png | .jpg | .jpeg)</strong>
+          </p>
+          <form action="main" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input id="file-input" type="file" name="dataset">
+            <button id="process" value="submit" value="Upload" class="btn btn-success">Process</button>
+        </form>
+        <div class="container container-3 shadow-sms p-4 m-3 rounded-1">
+          <p class="p-types">Cancer detection chance:</p>
+          <p class="p-text">
+            The percentage shown is the chance that the lesion uploaded in the
+            image is malignant. We recommend seeing a doctor immidiately if the
+            percentage you see is more than 80%. Show a doctor regaurdless in case of any discomfort.
+          </p>
+          <div class="progress progress-striped active">
+            <div
+              class="progress-bar"
+              role="progressbar"
+              style="width: {{ percent }}%; background: #03930d"
+              aria-valuenow="{{ percent }}"
+              aria-valuemin="0"
+              aria-valuemax="100"
+            >
+            {{ percent }}%
+            </div>
+          </div>
+        </div>
+        <div class="d-flex justify-content-between">
+          <p class="bottom">
+            We are open to use the feedbacks given to us in improving our
+            project for it's efficiency and better usage at our
+            <button type="button" class="btn btn-primary">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-github"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+                ></path>
+              </svg>
+              GitHub
+            </button>
+          </p>
+        </div>
+        <div class="bottom container m-5">
+          <div class="row">
+            <!-- Abhik -->
+            <div class="col d-flex justify-content-around">
+              <div
+                class="card m-4 shadow"
+                style="width: 12.72rem; height: 19rem"
+              >
+                <img
+                  src="{{ STATIC_URL }}images/Profile/Abhik.png"
+                  alt="Abhik.png"
+                  width="200px"
+                  height="200px"
+                />
+                <div class="card-body">
+                  <h5 class="card-title" style="text-align: center">
+                    Abhik Ray
+                  </h5>
+                  <div class="d-flex justify-content-between">
+                    <a href="https://github.com/Abhik-Ray" class="btn btn-primary"
+                    target="_blank" rel="noopener noreferrer"
+                      >GitHub</a
+                    >
+                    <a
+                      href="https://www.linkedin.com/in/abhik-ray01/"
+                      class="btn btn-info"
+                      target="_blank" rel="noopener noreferrer"
+                      >LinkedIn</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Amiya -->
+            <div class="col">
+              <div
+                class="card m-4 shadow"
+                style="width: 12.72rem; height: 19rem"
+              >
+                <img
+                  src="{{ STATIC_URL }}images/Profile/Amiya.png"
+                  width="200px"
+                  height="200px"
+                  alt="Amiya.png"
+                />
+                <div class="card-body">
+                  <h5 class="card-title" style="text-align: center">
+                    Amiya Ashutosh Sahu
+                  </h5>
+                  <div class="d-flex justify-content-between">
+                    <a
+                      href="https://github.com/Amiya-10"
+                      class="btn btn-primary"
+                      target="_blank" rel="noopener noreferrer"
+                      >GitHub</a
+                    >
+                    <a
+                      href="https://www.linkedin.com/in/amiya-ashutosh-sahu-2a5619207"
+                      class="btn btn-info"
+                      target="_blank" rel="noopener noreferrer"
+                      >LinkedIn</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Anup -->
+          <div class="row">
+            <div class="col">
+              <div
+                class="card m-4 shadow"
+                style="width: 12.72rem; height: 19rem"
+              >
+                <img
+                  src="{{ STATIC_URL }}images/Profile/Anup.png"
+                  width="200px"
+                  height="200px"
+                  alt="Anup.png"
+                />
+                <div class="card-body">
+                  <h5 class="card-title" style="text-align: center">
+                    Anup Pattanaik
+                  </h5>
+                  <div class="d-flex justify-content-between">
+                    <a
+                      href="https://github.com/Anup-pattnaik"
+                      class="btn btn-primary"
+                      target="_blank" rel="noopener noreferrer"
+                      >GitHub</a
+                    >
+                    <a
+                      href="https://www.linkedin.com/in/anup-pattanaik-71ab86209/"
+                      class="btn btn-info"
+                      target="_blank" rel="noopener noreferrer"
+                      >LinkedIn</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Ayan -->
+            <div class="col">
+              <div
+                class="card m-4 shadow"
+                style="width: 12.72rem; height: 19rem"
+              >
+                <img
+                  src="{{ STATIC_URL }}images/Profile/Ayan.png"
+                  width="200px"
+                  height="200px"
+                  alt="Ayan.png"
+                />
+                <div class="card-body">
+                  <h5 class="card-title" style="text-align: center">
+                    Ayan Kumar Mondal
+                  </h5>
+                  <div class="d-flex justify-content-between">
+                    <a
+                      href="https://github.com/AyanDaastan"
+                      class="btn btn-primary"
+                      target="_blank" rel="noopener noreferrer"
+                      >GitHub</a
+                    >
+                    <a
+                      href="https://www.linkedin.com/mwlite/in/ayan-mandal-2752a819b"
+                      class="btn btn-info"
+                      target="_blank" rel="noopener noreferrer"
+                      >LinkedIn</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Hitesh -->
+            <div class="col">
+              <div
+                class="card m-4 shadow"
+                style="width: 12.72rem; height: 19rem"
+              >
+                <img
+                  src="{{ STATIC_URL }}images/Profile/Hitesh.png"
+                  width="200px"
+                  height="200px"
+                  alt="Hitesh.png"
+                />
+                <div class="card-body">
+                  <h5 class="card-title" style="text-align: center">
+                    Hitesh Naik
+                  </h5>
+                  <div class="d-flex justify-content-between">
+                    <a
+                      href="https://github.com/hiteshn21"
+                      class="btn btn-primary"
+                      target="_blank" rel="noopener noreferrer"
+                      >GitHub</a
+                    >
+                    <a
+                      href="https://www.linkedin.com/in/hitesh-naik-422035202/"
+                      class="btn btn-info"
+                      target="_blank" rel="noopener noreferrer"
+                      >LinkedIn</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="{% static 'script/result.js' %}"></script>
+  </body>
+</html>
